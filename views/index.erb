@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Blacklist</title>
+    <link rel="stylesheet" href="./normalize.css" />
+    <link rel="stylesheet" href="./blacklist.css" />
+  </head>
+  <body>
+    <div id='container'>
+      <h1>Blacklist</h1>
+      <ul id='hosts'>
+        <% if @blocked_hosts.empty? && @allowed_hosts.empty? %>
+          <li class='host empty'>
+            We aren't managing any hosts yet!
+          </li>
+        <% end %>
+        <% @blocked_hosts.each do |host| %>
+          <li class='host blocked'>
+            <span class='host-name'><%= host.name %></span>
+            <span class='host-allow'>
+              <%= allow_link host, '5m',  300 %>
+              <%= allow_link host, '15m', 900 %>
+              <%= allow_link host, '30m', 1800 %>
+              <%= allow_link host, '1h',  3600 %>
+            </span>
+          </li>
+        <% end %>
+        <% @allowed_hosts.each do |host| %>
+          <li class='host allowed'>
+            <span class='host-name'><%= host.name %></span>
+            <%= deny_button host, "&#x2714; done" %>
+            <span class='host-until'>
+              <%= time_remaining host %>m remaining
+            </span>
+          </li>
+        <% end %>
+      </ul>
+      <form action="/add" method="post">
+        <input type='text' placeholder='www.example.com' name='hostname' />
+        <input type='submit' value='Add host' />
+      </form>
+    </div>
+  </body>
+</html>

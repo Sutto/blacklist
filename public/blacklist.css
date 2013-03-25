@@ -1,0 +1,84 @@
+body {
+  background: #EEE;
+}
+
+#container {
+  margin: 20px auto;
+  background: #FFF;
+  border: 1px solid #999;
+  width: 480px;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+#container h1 {
+  margin: 0 0 10px;
+  text-align: center;
+}
+
+ul#hosts {
+  margin: 0 10px 10px;
+  padding: 0;
+  list-style: none;
+  line-height: 1.8em;
+  font-size: 1.2em;
+}
+
+li.host {
+  overflow: hidden;
+  border-bottom: 1px solid #DDD;
+}
+
+li.host:last-child {
+  border-bottom: none;
+}
+
+li.host span.host-name {
+  float: left;
+  font-weight: bold;
+  color: #000;
+}
+
+li.host span.host-allow, li.host span.host-until {
+  float: right;
+  color: #999;
+}
+
+li.host span.host-allow a {
+  text-decoration: none;
+  color: #333;
+  margin-left: 5px;
+  font-size: 0.8em;
+  color: blue;
+}
+
+li.empty {
+  text-align: center;
+  padding: 10px 0;
+  color: #999;
+}
+
+li.host span.host-allow a:hover {
+  text-decoration: underline;
+}
+
+li.host.allowed span.host-name {
+  color: green;
+}
+
+form {
+  text-align: center;
+}
+
+form.host-deny {
+  float: right;
+  font-size: 0.8em;
+  margin-left: 3px;
+}
+
+form.host-deny button {
+  color: green;
+  border: none;
+  background: none;
+  font-weight: bold;
+}
